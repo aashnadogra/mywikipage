@@ -1,0 +1,121 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+    padding-top: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Heading Styles */
+h1, h2, h3, h4, h5, h6 {
+    cursor: pointer;
+    padding: 10px;
+    border-left: 5px solid transparent;
+    transition: all 0.3s ease;
+}
+
+h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
+    color: #0d6efd; /* Bootstrap primary color */
+    border-left: 5px solid #0d6efd;
+}
+
+/* Active Heading */
+.active-heading {
+    color: #0d6efd !important;
+    border-left: 5px solid #0d6efd;
+}
+
+/* Table of Contents Styles */
+#toc {
+    background-color: #fff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#toc h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+#toc ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+#toc li {
+    margin-bottom: 5px;
+}
+
+#toc a {
+    text-decoration: none;
+    color: #0d6efd;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+#toc a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+/* Collapsible Content Styles */
+.content {
+    display: none;
+    margin-left: 20px;
+    padding: 10px 15px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+/* Bootstrap Buttons for smoother scrolling */
+a:focus, button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Indentation for ToC based on heading level */
+.toc-level-1 {
+    margin-left: 0;
+}
+
+.toc-level-2 {
+    margin-left: 20px;
+}
+
+.toc-level-3 {
+    margin-left: 40px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    h1, h2, h3 {
+        font-size: 1.2rem;
+        padding: 5px;
+    }
+
+    .content {
+        margin-left: 10px;
+        padding: 8px;
+    }
+
+    #toc h2 {
+        font-size: 1.2rem;
+    }
+
+    #toc {
+        padding: 10px;
+    }
+}
