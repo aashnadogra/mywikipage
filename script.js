@@ -1,14 +1,12 @@
-// Wait for the DOM to fully load
+
 document.addEventListener('DOMContentLoaded', function () {
     const tocContainer = document.querySelector('#toc ul');
     const allHeaders = document.querySelectorAll('section h1, section h2, section h3, section h4, section h5, section h6');
 
-    // Function to generate unique IDs for headings
     const generateID = (text) => {
         return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
     };
 
-    // Function to create ToC entries recursively
     const buildToC = () => {
         const toc = [];
         const stack = [{ children: toc, level: 0 }];
@@ -22,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const tocItem = { text, id, children: [] };
 
-            // Find the proper place in the hierarchy
             while (level <= stack[stack.length - 1].level && stack.length > 1) {
                 stack.pop();
             }
@@ -31,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
             stack.push({ children: tocItem.children, level });
         });
 
-        // Function to create HTML list from ToC structure
         const createList = (items, parentUl, currentLevel) => {
             items.forEach(item => {
                 const li = document.createElement('li');
@@ -45,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if (item.children.length > 0) {
                     const ul = document.createElement('ul');
-                    ul.classList.add('list-group', 'ms-3'); // Bootstrap classes for nested lists
+                    ul.classList.add('list-group', 'ms-3'); 
                     li.appendChild(ul);
                     createList(item.children, ul, currentLevel + 1);
                 }
@@ -55,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function () {
         createList(toc, tocContainer, 1);
     };
 
-    // Function to handle collapsible sections
     const setupCollapsibles = () => {
         allHeaders.forEach(header => {
             header.addEventListener('click', function () {
@@ -69,7 +64,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     };
 
-    // Function to handle ToC link clicks (open/collapse the section on click)
     const setupToCLinks = () => {
         const tocLinks = document.querySelectorAll('#toc a');
         tocLinks.forEach(link => {
@@ -79,20 +73,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 const targetElement = document.getElementById(targetId);
 
                 if (targetElement) {
-                    // Toggle the section if it's collapsed or visible
                     const content = targetElement.nextElementSibling;
                     const isVisible = content.style.display === 'block';
                     content.style.display = isVisible ? 'none' : 'block';
                     targetElement.classList.toggle('active-heading', !isVisible);
                     
-                    // Smooth scroll to the section
                     targetElement.scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
     };
 
-    // Initialize ToC, collapsibles, and link handlers
     buildToC();
     setupCollapsibles();
     setupToCLinks();
