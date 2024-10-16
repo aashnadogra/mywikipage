@@ -14,12 +14,12 @@ A simple web project that creates a collapsible Table of Contents (ToC) for cont
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/repository-name.git
+    https://github.com/aashnadogra/mywikipage.git
     ```
    
 2. Navigate to the project directory:
     ```bash
-    cd repository-name
+    cd mywikipage
     ```
 
 3. Open the `mywikipage.html` file in your preferred web browser.
